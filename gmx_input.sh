@@ -1,6 +1,6 @@
 #!/bin/bash
 
-pdb= <protein name without extension>
+pdb=2p54 # <protein name without extension>
 exe=gmx # Replace gmx as per the system availability
 #Prepare the Topology
     echo 14 | $exe pdb2gmx -f $pdb.pdb -o $pdb-processed.gro -water spce
