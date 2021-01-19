@@ -1,6 +1,12 @@
 # GMX_APO_Protein
 
 Use the following script to generate the GROMACS compatible input files to run the Molecular Dynamics Simulations of any protein (with no LIgand).
+
+## System Requirements
+- GROMACS
+- XMGRACE
+- GNUPLOT
+
 ## Simulations steps includes:
 - **Energy minimization** <br>
 - **Equilibration** <br>
