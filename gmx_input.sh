@@ -4,7 +4,28 @@ pdb= <protein name without extension>
 exe=gmx # Replace gmx as per the system availability
 #Prepare the Topology
     echo 14 | $exe pdb2gmx -f $pdb.pdb -o $pdb-processed.gro -water spce
-
+    # If there are missing atoms in the pdb then use the following command
+    # echo 14 | $exe pdb2gmx -f $pdb.pdb -o $pdb-processed.gro -water spce -missing
+:"
+Select the Force Field:
+From '/usr/local/gromacs2019/share/gromacs/top':
+ 1: AMBER03 protein, nucleic AMBER94 (Duan et al., J. Comp. Chem. 24, 1999-2012, 2003)
+ 2: AMBER94 force field (Cornell et al., JACS 117, 5179-5197, 1995)
+ 3: AMBER96 protein, nucleic AMBER94 (Kollman et al., Acc. Chem. Res. 29, 461-469, 1996)
+ 4: AMBER99 protein, nucleic AMBER94 (Wang et al., J. Comp. Chem. 21, 1049-1074, 2000)
+ 5: AMBER99SB protein, nucleic AMBER94 (Hornak et al., Proteins 65, 712-725, 2006)
+ 6: AMBER99SB-ILDN protein, nucleic AMBER94 (Lindorff-Larsen et al., Proteins 78, 1950-58, 2010)
+ 7: AMBERGS force field (Garcia & Sanbonmatsu, PNAS 99, 2782-2787, 2002)
+ 8: CHARMM27 all-atom force field (CHARM22 plus CMAP for proteins)
+ 9: GROMOS96 43a1 force field
+10: GROMOS96 43a2 force field (improved alkane dihedrals)
+11: GROMOS96 45a3 force field (Schuler JCC 2001 22 1205)
+12: GROMOS96 53a5 force field (JCC 2004 vol 25 pag 1656)
+13: GROMOS96 53a6 force field (JCC 2004 vol 25 pag 1656)
+14: GROMOS96 54a7 force field (Eur. Biophys. J. (2011), 40,, 843-856, DOI: 10.1007/s00249-011-0700-9)
+15: GROMOS96 54a7 force field (Eur. Biophys. J. (2011), 40,, 843-856, DOI: 10.1007/s00249-011-0700-9)
+16: OPLS-AA/L all-atom force field (2001 aminoacid dihedrals)
+"
 #Define the unit box
     $exe editconf -f $pdb-processed.gro -o $pdb-newbox.gro -c -d 1.2 -bt cubic
 
@@ -14,7 +35,24 @@ exe=gmx # Replace gmx as per the system availability
 #Adding Ions
     $exe grompp -f ions.mdp -c $pdb-solv.gro -p topol.top -o ions-$pdb.tpr
         echo 13 | $exe genion -s ions-$pdb.tpr -o $pdb-solv-ions.gro -p topol.top -pname NA -nname CL -neutral
-
+:"
+Select a continuous group of solvent molecules
+Group     0 (         System) has 71958 elements
+Group     1 (        Protein) has  2790 elements
+Group     2 (      Protein-H) has  2196 elements
+Group     3 (        C-alpha) has   279 elements
+Group     4 (       Backbone) has   837 elements
+Group     5 (      MainChain) has  1118 elements
+Group     6 (   MainChain+Cb) has  1386 elements
+Group     7 (    MainChain+H) has  1392 elements
+Group     8 (      SideChain) has  1398 elements
+Group     9 (    SideChain-H) has  1078 elements
+Group    10 (    Prot-Masses) has  2790 elements
+Group    11 (    non-Protein) has 69168 elements
+Group    12 (          Water) has 69168 elements
+Group    13 (            SOL) has 69168 elements
+Group    14 (      non-Water) has  2790 elements
+"
 #Energy Minimization
     $exe grompp -f em.mdp -c $pdb-solv-ions.gro -p topol.top -o em-$pdb.tpr
        $exe mdrun -v -deffnm em-$pdb
@@ -22,7 +60,20 @@ exe=gmx # Replace gmx as per the system availability
 
 #Calculate Potential
     echo 10 0 | $exe energy -f em-$pdb.edr -o potential-em-$pdb.xvg
-
+:"
+Select the terms you want from the following list by
+selecting either (part of) the name or the number or a combination.
+End your selection with an empty line or a zero.
+-------------------------------------------------------------------
+  1  G96Bond          2  G96Angle         3  Proper-Dih.      4  Improper-Dih. 
+  5  LJ-14            6  Coulomb-14       7  LJ-(SR)          8  Coulomb-(SR)  
+  9  Coul.-recip.    10  Potential       11  Pressure        12  Vir-XX        
+ 13  Vir-XY          14  Vir-XZ          15  Vir-YX          16  Vir-YY        
+ 17  Vir-YZ          18  Vir-ZX          19  Vir-ZY          20  Vir-ZZ        
+ 21  Pres-XX         22  Pres-XY         23  Pres-XZ         24  Pres-YX       
+ 25  Pres-YY         26  Pres-YZ         27  Pres-ZX         28  Pres-ZY       
+ 29  Pres-ZZ         30  #Surf*SurfTen   31  T-rest
+"
 #Create potential.png
     grace -nxy potential-em-$pdb.xvg -hdevice PNG -hardcopy -printfile potential-em-$pdb.png
 
