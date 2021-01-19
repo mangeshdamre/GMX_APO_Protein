@@ -16,7 +16,7 @@ exe=gmx # Replace gmx as per the system availability
         echo 13 | $exe genion -s ions-$pdb.tpr -o $pdb-solv-ions.gro -p topol.top -pname NA -nname CL -neutral
 
 #Energy Minimization
-    $exe grompp -f minim.mdp -c $pdb-solv-ions.gro -p topol.top -o em-$pdb.tpr
+    $exe grompp -f em.mdp -c $pdb-solv-ions.gro -p topol.top -o em-$pdb.tpr
        $exe mdrun -v -deffnm em-$pdb
        # mpirun -np 64 gmx_mpi_d mdrun -v -deffnm em-$pdb # to run in parallel
 
