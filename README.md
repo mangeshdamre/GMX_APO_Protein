@@ -3,7 +3,7 @@
 Use the following script to generate the GROMACS compatible input files to run the Molecular Dynamics Simulations of any protein (with no LIgand).
 
 ## System Requirements
-- GROMACS
+- GROMACS # How to install GROMACS? <a href="https://manual.gromacs.org/documentation/current/install-guide/index.html" target="_blank">GROMACS INSTALLATION</a><br>
 - XMGRACE
 - GNUPLOT
 
