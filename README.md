@@ -15,9 +15,9 @@ Use the following script to generate the GROMACS compatible input files to run t
 - **Production** <br>
 
 ## INPUT FILES required for running simulation:
-- **<a href="https://github.com/mangeshdamre/GMX_APO_Protein/blob/main/mdp/em.mdp" target="_blank">ions.mdp</a><br>** # For addition of ions (Na/Cl) in the water box <br>
-- **em.mdp**   # For Energy minimization <br>
-- **nvt.mdp**  # For 1st step of equilibration at constant Volume and Temperature <br>
-- **npt.mdp**  # For 2nd step of equilibration at constant Pressure and Temperature <br>
-- **md.mdp**   # For Production run <br>
+- **<a href="https://github.com/mangeshdamre/GMX_APO_Protein/blob/main/mdp/ions.mdp" target="_blank">ions.mdp</a>** # For addition of ions (Na/Cl) in the water box <br>
+- **<a href="https://github.com/mangeshdamre/GMX_APO_Protein/blob/main/mdp/em.mdp" target="_blank">em.mdp</a>**   # For Energy minimization <br>
+- **<a href="https://github.com/mangeshdamre/GMX_APO_Protein/blob/main/mdp/nvt.mdp" target="_blank">nvt.mdp</a>**  # For 1st step of equilibration at constant Volume and Temperature <br>
+- **<a href="https://github.com/mangeshdamre/GMX_APO_Protein/blob/main/mdp/npt.mdp" target="_blank">npt.mdp</a>**  # For 2nd step of equilibration at constant Pressure and Temperature <br>
+- **<a href="https://github.com/mangeshdamre/GMX_APO_Protein/blob/main/mdp/md.mdp" target="_blank">md.mdp</a>**   # For Production run <br>
 
