@@ -4,8 +4,8 @@ Use the following script to generate the GROMACS compatible input files to run t
 ## Simulations steps includes:
 1] Energy minimization <br>
 2] Equilibration <br>
-  a) NVT Ensemble <br>
-  b) NPT Ensemble <br>
+  </t>a) NVT Ensemble <br>
+  </t>b) NPT Ensemble <br>
 3] Production <br>
 
 ## INPUT FILES required for running simulation:
