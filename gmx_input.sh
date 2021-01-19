@@ -87,7 +87,23 @@ End your selection with an empty line or a zero.
 
 #Create temperature.png
     grace -nxy temperature-em-$pdb.xvg -hdevice PNG -hardcopy -printfile temperature-em-$pdb.png
-
+:"
+Select the terms you want from the following list by
+selecting either (part of) the name or the number or a combination.
+End your selection with an empty line or a zero.
+-------------------------------------------------------------------
+  1  G96Bond          2  G96Angle         3  Proper-Dih.      4  Improper-Dih. 
+  5  LJ-14            6  Coulomb-14       7  LJ-(SR)          8  Disper.-corr. 
+  9  Coulomb-(SR)    10  Coul.-recip.    11  Position-Rest.  12  Potential     
+ 13  Kinetic-En.     14  Total-Energy    15  Conserved-En.   16  Temperature   
+ 17  Pres.-DC        18  Pressure        19  Constr.-rmsd    20  Vir-XX        
+ 21  Vir-XY          22  Vir-XZ          23  Vir-YX          24  Vir-YY        
+ 25  Vir-YZ          26  Vir-ZX          27  Vir-ZY          28  Vir-ZZ        
+ 29  Pres-XX         30  Pres-XY         31  Pres-XZ         32  Pres-YX       
+ 33  Pres-YY         34  Pres-YZ         35  Pres-ZX         36  Pres-ZY       
+ 37  Pres-ZZ         38  #Surf*SurfTen   39  T-Protein       40  T-non-Protein 
+ 41  Lamb-Protein                        42  Lamb-non-Protein
+"
 #Equilibration at constant pressure
     $exe grompp -f npt.mdp -c nvt-$pdb.gro -r nvt-$pdb.gro -t nvt-$pdb.cpt -p topol.top -o npt-$pdb.tpr
         $exe mdrun -deffnm npt-$pdb -v
@@ -95,7 +111,26 @@ End your selection with an empty line or a zero.
 
 #Calculate Pressure
     echo 18 | $exe energy -f npt-$pdb.edr -o pressure-npt-$pdb.xvg
-
+:"
+Select the terms you want from the following list by
+selecting either (part of) the name or the number or a combination.
+End your selection with an empty line or a zero.
+-------------------------------------------------------------------
+  1  G96Bond          2  G96Angle         3  Proper-Dih.      4  Improper-Dih. 
+  5  LJ-14            6  Coulomb-14       7  LJ-(SR)          8  Disper.-corr. 
+  9  Coulomb-(SR)    10  Coul.-recip.    11  Position-Rest.  12  Potential     
+ 13  Kinetic-En.     14  Total-Energy    15  Conserved-En.   16  Temperature   
+ 17  Pres.-DC        18  Pressure        19  Constr.-rmsd    20  Box-X         
+ 21  Box-Y           22  Box-Z           23  Volume          24  Density       
+ 25  pV              26  Enthalpy        27  Vir-XX          28  Vir-XY        
+ 29  Vir-XZ          30  Vir-YX          31  Vir-YY          32  Vir-YZ        
+ 33  Vir-ZX          34  Vir-ZY          35  Vir-ZZ          36  Pres-XX       
+ 37  Pres-XY         38  Pres-XZ         39  Pres-YX         40  Pres-YY       
+ 41  Pres-YZ         42  Pres-ZX         43  Pres-ZY         44  Pres-ZZ       
+ 45  #Surf*SurfTen   46  Box-Vel-XX      47  Box-Vel-YY      48  Box-Vel-ZZ    
+ 49  T-Protein                           50  T-non-Protein                     
+ 51  Lamb-Protein                        52  Lamb-non-Protein
+"
     ##Create pressure.png
         grace -nxy pressure-npt-$pdb.xvg -hdevice PNG -hardcopy -printfile pressure-npt-$pdb.png
 
@@ -107,20 +142,80 @@ End your selection with an empty line or a zero.
 
 #Calculate rmsd-npt
     echo 4 4 | $exe rms -f npt-$pdb.xtc -s npt-$pdb.tpr -o rmsd-npt-$pdb.xvg -tu ns
-
+:"
+Select group for least squares fit
+Group     0 (         System) has 419184 elements
+Group     1 (        Protein) has 18864 elements
+Group     2 (      Protein-H) has 14748 elements
+Group     3 (        C-alpha) has  1902 elements
+Group     4 (       Backbone) has  5706 elements
+Group     5 (      MainChain) has  7614 elements
+Group     6 (   MainChain+Cb) has  9396 elements
+Group     7 (    MainChain+H) has  9450 elements
+Group     8 (      SideChain) has  9414 elements
+Group     9 (    SideChain-H) has  7134 elements
+Group    10 (    Prot-Masses) has 18864 elements
+Group    11 (    non-Protein) has 400320 elements
+Group    12 (          Water) has 400278 elements
+Group    13 (            SOL) has 400278 elements
+Group    14 (      non-Water) has 18906 elements
+Group    15 (            Ion) has    42 elements
+Group    16 (             NA) has    42 elements
+Group    17 ( Water_and_ions) has 400320 elements
+"
     ##Create rmsd-npt.png
         grace -nxy rmsd-npt-$pdb.xvg -hdevice PNG -hardcopy -printfile rmsd-npt-$pdb.png
 
 #Calculate rmsf-npt
     echo 4 | $exe rmsf -f npt-$pdb.xtc -s npt-$pdb.tpr -o rmsf-npt-$pdb.xvg -res
-
+:"
+Select group(s) for root mean square calculation
+Group     0 (         System) has 419184 elements
+Group     1 (        Protein) has 18864 elements
+Group     2 (      Protein-H) has 14748 elements
+Group     3 (        C-alpha) has  1902 elements
+Group     4 (       Backbone) has  5706 elements
+Group     5 (      MainChain) has  7614 elements
+Group     6 (   MainChain+Cb) has  9396 elements
+Group     7 (    MainChain+H) has  9450 elements
+Group     8 (      SideChain) has  9414 elements
+Group     9 (    SideChain-H) has  7134 elements
+Group    10 (    Prot-Masses) has 18864 elements
+Group    11 (    non-Protein) has 400320 elements
+Group    12 (          Water) has 400278 elements
+Group    13 (            SOL) has 400278 elements
+Group    14 (      non-Water) has 18906 elements
+Group    15 (            Ion) has    42 elements
+Group    16 (             NA) has    42 elements
+Group    17 ( Water_and_ions) has 400320 elements
+"
     ##Create rmsf-npt.png
         grace -nxy rmsf-npt-$pdb.xvg -hdevice PNG -hardcopy -printfile rmsf-npt-$pdb.png
 
 #Calculate Hbond
     ## Select 1 for acceptor and 1 for donor
         echo 1 1 | $exe hbond -f npt-$pdb.xtc -s npt-$pdb.tpr -num Hbond-npt-$pdb.xvg
-
+:"
+Specify 2 groups to analyze:
+Group     0 (         System) has 419184 elements
+Group     1 (        Protein) has 18864 elements
+Group     2 (      Protein-H) has 14748 elements
+Group     3 (        C-alpha) has  1902 elements
+Group     4 (       Backbone) has  5706 elements
+Group     5 (      MainChain) has  7614 elements
+Group     6 (   MainChain+Cb) has  9396 elements
+Group     7 (    MainChain+H) has  9450 elements
+Group     8 (      SideChain) has  9414 elements
+Group     9 (    SideChain-H) has  7134 elements
+Group    10 (    Prot-Masses) has 18864 elements
+Group    11 (    non-Protein) has 400320 elements
+Group    12 (          Water) has 400278 elements
+Group    13 (            SOL) has 400278 elements
+Group    14 (      non-Water) has 18906 elements
+Group    15 (            Ion) has    42 elements
+Group    16 (             NA) has    42 elements
+Group    17 ( Water_and_ions) has 400320 elements
+"
     ##Create Hbond-npt.png
         grace -nxy Hbond-npt-$pdb.xvg -hdevice PNG -hardcopy -printfile Hbond-npt-$pdb.png
 
@@ -135,14 +230,75 @@ End your selection with an empty line or a zero.
     ## Periodicty correction
         ### select 1 for protein and 0 for system
             echo 1 0 | $exe trjconv -s md-$pdb.tpr -f md-$pdb.xtc -o md-$pdb-noPBC.xtc -pbc mol -center
-
+:"
+Note that major changes are planned in future for trjconv, to improve usability and utility.Select group for centering
+Group     0 (         System) has 419184 elements
+Group     1 (        Protein) has 18864 elements
+Group     2 (      Protein-H) has 14748 elements
+Group     3 (        C-alpha) has  1902 elements
+Group     4 (       Backbone) has  5706 elements
+Group     5 (      MainChain) has  7614 elements
+Group     6 (   MainChain+Cb) has  9396 elements
+Group     7 (    MainChain+H) has  9450 elements
+Group     8 (      SideChain) has  9414 elements
+Group     9 (    SideChain-H) has  7134 elements
+Group    10 (    Prot-Masses) has 18864 elements
+Group    11 (    non-Protein) has 400320 elements
+Group    12 (          Water) has 400278 elements
+Group    13 (            SOL) has 400278 elements
+Group    14 (      non-Water) has 18906 elements
+Group    15 (            Ion) has    42 elements
+Group    16 (             NA) has    42 elements
+Group    17 ( Water_and_ions) has 400320 elements
+"
     ## RMSD calculation : Protein backbone
         ### select 4 for protein backbone
             echo 4 4 | $exe rms -s md-$pdb.tpr -f md-$pdb-noPBC.xtc -o rmsd-md-$pdb.xvg -tu ns
-
+:"
+Select group for least squares fit
+Group     0 (         System) has 419184 elements
+Group     1 (        Protein) has 18864 elements
+Group     2 (      Protein-H) has 14748 elements
+Group     3 (        C-alpha) has  1902 elements
+Group     4 (       Backbone) has  5706 elements
+Group     5 (      MainChain) has  7614 elements
+Group     6 (   MainChain+Cb) has  9396 elements
+Group     7 (    MainChain+H) has  9450 elements
+Group     8 (      SideChain) has  9414 elements
+Group     9 (    SideChain-H) has  7134 elements
+Group    10 (    Prot-Masses) has 18864 elements
+Group    11 (    non-Protein) has 400320 elements
+Group    12 (          Water) has 400278 elements
+Group    13 (            SOL) has 400278 elements
+Group    14 (      non-Water) has 18906 elements
+Group    15 (            Ion) has    42 elements
+Group    16 (             NA) has    42 elements
+Group    17 ( Water_and_ions) has 400320 elements
+"
     ## RMSF calculation : Protein backbone
         ### select 4 for protein backbone
             echo 4 | $exe rmsf -s md-$pdb.tpr -f md-$pdb-noPBC.xtc -o rmsf-md-$pdb.xvg -res
+:"
+Select group(s) for root mean square calculation
+Group     0 (         System) has 419184 elements
+Group     1 (        Protein) has 18864 elements
+Group     2 (      Protein-H) has 14748 elements
+Group     3 (        C-alpha) has  1902 elements
+Group     4 (       Backbone) has  5706 elements
+Group     5 (      MainChain) has  7614 elements
+Group     6 (   MainChain+Cb) has  9396 elements
+Group     7 (    MainChain+H) has  9450 elements
+Group     8 (      SideChain) has  9414 elements
+Group     9 (    SideChain-H) has  7134 elements
+Group    10 (    Prot-Masses) has 18864 elements
+Group    11 (    non-Protein) has 400320 elements
+Group    12 (          Water) has 400278 elements
+Group    13 (            SOL) has 400278 elements
+Group    14 (      non-Water) has 18906 elements
+Group    15 (            Ion) has    42 elements
+Group    16 (             NA) has    42 elements
+Group    17 ( Water_and_ions) has 400320 elements
+"
             ####Create rmsf-md-$pdb.png
                 grace -nxy rmsf-md-$pdb.xvg -hdevice PNG -hardcopy -printfile rmsf-md-$pdb.png
 
