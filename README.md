@@ -7,7 +7,7 @@ Use the following script to generate the GROMACS compatible input files to run t
 - XMGRACE # How to install XMGRACE? <a href="https://github.com/ma-laforge/HowTo/blob/master/grace/grace_install.md" target="_blank">XMGRACE INSTALLATION</a><br>
 - GNUPLOT # How to install GNUPLOT? <a href="http://www.gnuplot.info/" target="_blank">GNUPLOT INSTALLATION</a><br>
 
-## Simulations steps includes:
+## Simulations steps:
 - **Energy minimization** <br>
 - **Equilibration** <br>
   - **NVT Ensemble** <br>
