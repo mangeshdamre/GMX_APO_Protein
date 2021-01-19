@@ -6,6 +6,7 @@ Use the script (**<a href="https://github.com/mangeshdamre/GMX_APO_Protein/blob/
 - GROMACS # How to install GROMACS? <a href="https://manual.gromacs.org/documentation/current/install-guide/index.html" target="_blank">GROMACS INSTALLATION</a><br>
 - XMGRACE # How to install XMGRACE? <a href="https://github.com/ma-laforge/HowTo/blob/master/grace/grace_install.md" target="_blank">XMGRACE INSTALLATION</a><br>
 - GNUPLOT # How to install GNUPLOT? <a href="http://www.gnuplot.info/" target="_blank">GNUPLOT INSTALLATION</a><br>
+- DSSP # How to install DSSP? <a href="http://biskit.pasteur.fr/install/applications/dssp" target="_blank">DSSP INSTALLATION</a><br>
 
 ## Simulations steps:
 - **Energy minimization** <br>
