@@ -9,7 +9,7 @@ Use the following script to generate the GROMACS compatible input files to run t
 - **Production** <br>
 
 ## INPUT FILES required for running simulation:
-- **ions.mdp** # For addition of ions (NA/Cl) in the water box <br>
+- **ions.mdp** # For addition of ions (Na/Cl) in the water box <br>
 - **em.mdp**   # For Energy minimization <br>
 - **nvt.mdp**  # For 1st step of equilibration at constant Volume and Temperature <br>
 - **npt.mdp**  # For 2nd step of equilibration at constant Pressure and Temperature <br>
