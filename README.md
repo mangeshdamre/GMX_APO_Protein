@@ -1,6 +1,6 @@
 # GMX_APO_Protein
 
-Use the following script to generate the GROMACS compatible input files to run the Molecular Dynamics Simulations of any protein (with no LIgand).
+Use the script (**<a href="https://github.com/mangeshdamre/GMX_APO_Protein/blob/main/gmx_input.sh" target="_blank">gmx_input.sh</a>**) to generate the GROMACS compatible input files to run the Molecular Dynamics Simulations of any protein (with no LIgand).
 
 ## System Requirements
 - GROMACS # How to install GROMACS? <a href="https://manual.gromacs.org/documentation/current/install-guide/index.html" target="_blank">GROMACS INSTALLATION</a><br>
